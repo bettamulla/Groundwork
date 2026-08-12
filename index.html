@@ -6,9 +6,28 @@
 <title>Groundwork — Lead Ledger</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Space+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.24.7/babel.min.js" crossorigin="anonymous"></script>
+<script>
+  window.addEventListener('error', function (e) {
+    var root = document.getElementById('root');
+    if (root && !root.hasChildNodes()) {
+      root.innerHTML = '<div style="color:#EDE9DD;font-family:monospace;padding:32px;max-width:600px;line-height:1.6;">' +
+        '<strong>Groundwork failed to load.</strong><br/><br/>' +
+        (e && e.message ? e.message : 'Unknown error') +
+        '<br/><br/>This usually means a script from a CDN was blocked. Try opening this file directly in a browser instead of via a hosting preview, or check the browser console (F12) for details.</div>';
+    }
+  });
+  setTimeout(function () {
+    var root = document.getElementById('root');
+    if (root && !root.hasChildNodes()) {
+      root.innerHTML = '<div style="color:#EDE9DD;font-family:monospace;padding:32px;max-width:600px;line-height:1.6;">' +
+        '<strong>Groundwork is stuck loading.</strong><br/><br/>' +
+        'React, ReactDOM, or Babel did not load in time. Check your connection or open the browser console (F12) for the exact error.</div>';
+    }
+  }, 5000);
+</script>
 <style>
   * { box-sizing: border-box; }
   body { margin: 0; background: #14201A; font-family: 'Space Grotesk', sans-serif; }
@@ -23,7 +42,7 @@
 <body>
 <div id="root"></div>
 
-<script type="text/babel" data-presets="react,env">
+<script type="text/babel" data-presets="react">
 const { useState, useEffect, useCallback, useRef } = React;
 
 const MAX_LEADS = 200;
